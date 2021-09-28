@@ -1,3 +1,18 @@
 <app-header>
 </app-header>
-<pre>Login pages</pre>
+<mat-card>
+  <mat-card-title>Ingrese sus credenciales</mat-card-title>
+  <mat-card-content>
+
+  <form [formGroup]="loginForm">
+
+    <label for="first-name">Usuario: </label>
+    <input  mat-button id="first-name" type="email" formControlName="user" class="form-control"  required minlength="4">
+
+    <label for="last-name">Password: </label>
+    <input mat-button id="last-name" type="password" name="current-password" formControlName="passwd">
+
+  </form>
+  <button (click)="login()" [disabled]="!loginForm.valid">ingresar</button>
+  </mat-card-content>
+</mat-card>

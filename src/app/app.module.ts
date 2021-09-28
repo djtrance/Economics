@@ -10,8 +10,11 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
-import { LoginComponent } from './pages/login/login/login.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
+import { LoginComponent } from './pages/login/login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,11 @@ import { LoginComponent } from './pages/login/login/login.component';
     MatIconModule,
     MatMenuModule,
     MatGridListModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatCardModule,
+    MatFormFieldModule,
+    ReactiveFormsModule
+
 
   ],
   providers: [],
