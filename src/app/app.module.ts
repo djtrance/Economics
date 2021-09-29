@@ -12,15 +12,19 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { LoginComponent } from './pages/login/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { ServiciosLocalesService } from './services/serviciosLocales/servicios-locales.service';
+import { InterceptorInterceptor } from './services/interceptor/interceptor.interceptor';
+import { HomeComponent } from './pages/home/home/home.component';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -33,11 +37,16 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatProgressBarModule,
     MatCardModule,
     MatFormFieldModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+
 
 
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorInterceptor, multi: true },
+    ServiciosLocalesService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

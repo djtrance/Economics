@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {  FormControl,  FormGroup } from '@angular/forms';
 import { Validators } from '@angular/forms';
+import { ServiciosLocalesService } from 'src/app/services/serviciosLocales/servicios-locales.service';
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,12 +15,19 @@ export class LoginComponent implements OnInit {
     passwd: new FormControl('', Validators.required),
   });
 
-  constructor() { }
+  constructor(private services: ServiciosLocalesService, private router:Router) { }
 
   ngOnInit(): void {
   }
   login(){
     console.debug(this.loginForm.value);
+    this.services.getAllRequest().subscribe(data =>{
+      console.debug("getAllRequest",data);
+      this.router.navigate(['/home']);
+    }, error =>{
+      console.error("Error getAllRequest", error);
+    }
+    );
 
   }
   get user() { return this.loginForm.get('user'); }
