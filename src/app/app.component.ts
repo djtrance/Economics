@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { StorageOnBrowserService } from './services/storageOnBrowser/storage-on-browser.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Economics';
+  constructor(private storeService :StorageOnBrowserService,
+              private router: Router
+            ) {
+    if(this.storeService.getDatos() === null){
+        router.navigate(['/login']);
+    }
+  }
 }
+
