@@ -6,6 +6,23 @@
   border-left: 5px solid #a94442; /* red */
 }
 
+div.alert-danger {
+  background: #ff9985;
+  color: #a02c16;
+  box-shadow: 0 5px 5px 0 rgba(255, 153, 133, 0.6);
+}
+div.alert-success {
+  background: #aff0b2;
+  color: #42A948;
+  box-shadow: 0 5px 5px 0 #aff0b2;
+}
+div.alert-info {
+  background: #c1fbff;
+  color: #0f4c50;
+  box-shadow: 0 5px 5px 0 rgba(193, 251, 255, 0.6);
+}
+
+
 .alert div {
   background-color: #fed3d3;
   color: #820000;

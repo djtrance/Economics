@@ -7,10 +7,20 @@
   <form [formGroup]="loginForm">
 
     <label for="first-name">Usuario: </label>
-    <input  mat-button id="first-name" type="email" formControlName="user" class="form-control"  required minlength="4">
+    <input  mat-button id="first-name" type="text" formControlName="user"  id="user" class="form-control"  required minlength="4">
 
+    <div class="alert" *ngIf="loginForm.controls['user'].invalid && loginForm.controls['user'].getError('required')">
+     * Nombre de usuario es requerido.
+    </div>
+    <div
+    class="alert alert-danger" *ngIf="loginForm.controls['user'].invalid && loginForm.controls['user'].getError('email')">
+    *  Nombre de usuario debe ser un correo electrónico.
+    </div>
     <label for="last-name">Password: </label>
     <input mat-button id="last-name" type="password" name="current-password" formControlName="passwd">
+    <div  [ngClass]="{ 'alert-danger': loginForm.controls['user'].touched}"  *ngIf="loginForm.controls['passwd'].invalid && loginForm.controls['passwd'].getError('required')">
+      * Campo password es requerido.
+     </div>
 
   </form>
   <button (click)="login()" [disabled]="!loginForm.valid">ingresar</button>
